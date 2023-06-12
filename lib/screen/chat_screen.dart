@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scooor/res/assets_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:scooor/res/chat_msg.dart';
 import 'package:scooor/res/colors.dart';
 import 'package:scooor/services/apiservice.dart';
 import 'package:scooor/widgets/textWidget.dart';

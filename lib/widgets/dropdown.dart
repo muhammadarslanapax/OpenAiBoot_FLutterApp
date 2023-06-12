@@ -7,7 +7,6 @@ import 'package:scooor/res/colors.dart';
 import 'package:scooor/services/apiservice.dart';
 import 'package:scooor/widgets/textWidget.dart';
 
-import '../res/chat_msg.dart';
 
 class DropDownM extends StatefulWidget {
   const DropDownM({Key? key}) : super(key: key);
