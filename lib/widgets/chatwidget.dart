@@ -8,51 +8,67 @@ import 'package:scooor/widgets/textWidget.dart';
 class ChatWidget extends StatelessWidget {
   final String msg;
   final int chatIndex;
-  const ChatWidget({Key? key, required this.msg, required this.chatIndex}) : super(key: key);
+
+  const ChatWidget({Key? key, required this.msg, required this.chatIndex})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Material(
-          color: chatIndex == 0? scafffoldBackGroundColor :cardColor,
+          color: chatIndex == 0 ? scafffoldBackGroundColor : cardColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-
-                  chatIndex == 0?  AssetManager.personImage:AssetManager.openaiImg,
-                height: 30,
-                width: 30,),
-                const SizedBox(width: 8,),
-                Expanded(
-                    child:chatIndex ==0? NewWidget(lebel: msg,):DefaultTextStyle(
-                      style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 16),
-                      child: AnimatedTextKit(
-                        isRepeatingAnimation: false,
-                          repeatForever: false,
-                          displayFullTextOnTap: true,
-                          totalRepeatCount: 1,
-
-                          animatedTexts: [
-                        TyperAnimatedText(msg.trim())
-                      ]),
-                    )
-
+                  chatIndex == 0
+                      ? AssetManager.personImage
+                      : AssetManager.openaiImg,
+                  height: 30,
+                  width: 30,
                 ),
-                chatIndex ==0?const SizedBox.shrink():const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-
-                    Icon(Icons.thumb_up_alt_outlined,
-                    color: Colors.white,),
-                    SizedBox(width: 5,),
-                    Icon(Icons.thumb_down_alt_outlined,color: Colors.white,)
-                  ],
-                )
+                const SizedBox(
+                  width: 8,
+                ),
+                Expanded(
+                    child: chatIndex == 0
+                        ? NewWidget(
+                            lebel: msg,
+                          )
+                        : DefaultTextStyle(
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16),
+                            child: AnimatedTextKit(
+                                isRepeatingAnimation: false,
+                                repeatForever: false,
+                                displayFullTextOnTap: true,
+                                totalRepeatCount: 1,
+                                animatedTexts: [TyperAnimatedText(msg.trim())]),
+                          )),
+                chatIndex == 0
+                    ? const SizedBox.shrink()
+                    : const Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.thumb_up_alt_outlined,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.thumb_down_alt_outlined,
+                            color: Colors.white,
+                          )
+                        ],
+                      )
               ],
             ),
           ),
@@ -61,4 +77,3 @@ class ChatWidget extends StatelessWidget {
     );
   }
 }
-

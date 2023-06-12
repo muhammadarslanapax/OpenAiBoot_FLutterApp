@@ -12,9 +12,9 @@ class NewWidget extends StatelessWidget {
 
   const NewWidget({
     required this.lebel,
-     this.color,
-     this.fontWeight,
-     this.fontSize = 18,
+    this.color,
+    this.fontWeight,
+    this.fontSize = 18,
     super.key,
   });
 
@@ -23,13 +23,9 @@ class NewWidget extends StatelessWidget {
     return Text(
       lebel,
       style: TextStyle(
-        color: color?? Colors.white,
-        fontSize: fontSize,
-        fontWeight: fontWeight ??FontWeight.w300
-
-      ),
-
-
+          color: color ?? Colors.white,
+          fontSize: fontSize,
+          fontWeight: fontWeight ?? FontWeight.w300),
     );
   }
 }

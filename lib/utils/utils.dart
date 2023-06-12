@@ -21,8 +21,7 @@ class Utils {
                     child: NewWidget(
                   lebel: 'Chosen Modal : ',
                   fontSize: 16,
-                )
-                ),
+                )),
                 Flexible(child: DropDownM())
               ],
             ),

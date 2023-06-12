@@ -7,7 +7,7 @@ class ChatModal {
 
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['msg'] = this.msg;
     data['chatIndex'] = this.chatIndex;
     return data;

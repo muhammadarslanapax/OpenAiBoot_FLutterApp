@@ -75,13 +75,13 @@ class Choices {
 
   Choices.fromJson(Map<String, dynamic> json) {
     message =
-    json['message'] != null ? new Message.fromJson(json['message']) : null;
+    json['message'] != null ? Message.fromJson(json['message']) : null;
     finishReason = json['finish_reason'];
     index = json['index'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.message != null) {
       data['message'] = this.message!.toJson();
     }
@@ -103,7 +103,7 @@ class Message {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['role'] = this.role;
     data['content'] = this.content;
     return data;

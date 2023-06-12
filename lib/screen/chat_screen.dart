@@ -93,20 +93,14 @@ class _ChatScreenState extends State<ChatScreen> {
             Material(
               color: cardColor,
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextField(
                         focusNode: focusNode,
-
                         style: const TextStyle(color: Colors.white),
                         controller: _controller,
-                        // onSubmitted: (value) async {
-                        //
-                        //   await chatshow(modalProvider: modalsProvider);
-                        //
-                        // },
                         decoration: const InputDecoration.collapsed(
                             hintText: "How can I help you !",
                             hintStyle: TextStyle(color: Colors.grey)),
@@ -114,19 +108,18 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     IconButton(
                         onPressed: () async {
-                          if(_controller.text.isNotEmpty){
+                          if (_controller.text.isNotEmpty) {
                             await chatshow(modalProvider: modalsProvider);
-                          }else{
-                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          } else {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
                               content: NewWidget(
                                 lebel: "Please Enter Your messege",
                               ),
                               duration: Duration(milliseconds: 200),
                               backgroundColor: Colors.red,
-                            )
-                            );}
-
-
+                            ));
+                          }
                         },
                         icon: Icon(
                           _isTyping ? Icons.downloading : Icons.send,
@@ -150,25 +143,24 @@ class _ChatScreenState extends State<ChatScreen> {
 
       setState(() {
         _isTyping = true;
-        chatList.add(ChatModal(msg:msg, chatIndex: 0));
-       // _controller.clear();
+        chatList.add(ChatModal(msg: msg, chatIndex: 0));
+        // _controller.clear();
         focusNode.unfocus();
       });
 
       chatList.addAll(await ApiService.sendMessege(
-          message: msg,
-          modalId: modalProvider.getCurrentModal));
+          message: msg, modalId: modalProvider.getCurrentModal));
       print("successfully send");
       setState(() {});
     } catch (e) {
       print("Error is $e");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
           content: NewWidget(
-        lebel: e.toString(),
-      ),
-        backgroundColor: Colors.red,
-      ),
-
+            lebel: e.toString(),
+          ),
+          backgroundColor: Colors.red,
+        ),
       );
     } finally {
       setState(() {
@@ -177,15 +169,10 @@ class _ChatScreenState extends State<ChatScreen> {
         scrollEnd();
       });
     }
-    // ApiService.getModal();
-    // setState(() {
-    //
-    //
-    // });
   }
 
   void scrollEnd() {
     _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 200), curve: Curves.easeOut);
+        duration: const Duration(milliseconds: 200), curve: Curves.easeOut);
   }
 }
